@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foguete do Musk</title>
+</head>
+<style>
+body
+    {
+        width: 100%;
+        height: 150vh;
+        background-image: linear-gradient(0deg, lightblue, darkblue);
+        overflow: hidden;
+    }
+    .foguete
+    {
+        position: absolute;
+        top: 650px;
+        left: 750px;
+    }
+    .lua
+    {
+        position: absolute;
+        top: 600px;
+        left: 445px;
+        width: 700px;
+        z-index: -1;
+    }
+</style>
+<body>
+    
+    <img src="foguete.gif" width="80px" id="foguete" class="foguete">
+    <img src="lua.png" class="lua">
+
+</body>
+<script src="jquery-3.7.0.min.js"></script>  
+<script>
+data = new Date()
+tempo_inicial = data.getTime()
+
+document.onkeydown = Pega_Tecla;
+
+function Pega_Tecla(e) 
+{	
+    e = e || window.event;
+
+    tecla = e.keyCode;
+    console.log(tecla); // MOSTRA O CÓDIGO DA TECLA PRESSIONADA
+    
+    data = new Date()
+    tempo_final = data.getTime()
+    
+    if(tempo_final-tempo_inicial > 1000)
+    {
+        tempo_inicial = tempo_final
+        if (tecla==65)
+        {
+            x = x - 20
+        }
+        if (tecla==68)
+        {
+            x = x + 20
+        }
+    }
+
+
+}
+
+temporizador = setTimeout(Subir, 1000)
+x = 750
+y = 400
+TOPO = ""
+ESQUERDA = ""
+function Subir()
+    {
+        TOPO = y + "px"
+        $("#foguete").animate({top:TOPO}, 1000)
+        temporizador = null
+        temporizador = setInterval( Decer, 1000)
+    }
+function Decer()
+    {
+        y = y + 20
+
+        TOPO = y + "px"
+        ESQUERDA = x + "px"
+        $("#foguete").animate({left:ESQUERDA, top:TOPO}, 1000)
+        
+        if (y > 550)
+        {
+            y = 550
+        }
+        
+        
+
+
+    }
+
+</script>  
+</html>
