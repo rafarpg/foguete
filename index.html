@@ -35,21 +35,60 @@ body
     <img src="lua.png" class="lua">
     
     <audio id="audio">
-        <source src="contagem_regressiva.mp3" type="audio/mpeg">
+        <source src="contagem_regressiva.mp3" type="audio/mp3">
     </audio>
-
+    <audio id="audio2">
+        <source src="lancamento_foguete.mp3" type="audio/mp3">
+    </audio>
+    <audio id="audio3">
+        <source src="carina-stars-Aug-3.wav" type="audio/wav">
+    </audio>
 </body>
 <script src="jquery-3.7.0.min.js"></script>  
 <script>
-    window.onload = function() {
-    var audio = document.getElementById("audio");
-    audio.play();
-};
+    var audio = new Audio();
+    audio.src = 'contagem_regressiva.mp3';
+    var audio2 = new Audio();
+    audio2.src = 'lancamento_foguete.mp3';
+    var audio3 = new Audio('we-have-a-problem.mp3');
+    audio2.src = 'carina-stars-Aug-3.wav';
+    function playAudio() 
+    {
+        audio.play();
+    }
+    setTimeout(playAudio, 500)
+
+    function playAudio2() 
+    {
+        audio2.play();
+    }
+    setTimeout(playAudio2, 15000)
+
+    function pausarAudio()
+    {
+        audio.pause()
+    }
+    setTimeout(pausarAudio, 15000)
+
+    function pausarAudio2()
+    {
+        audio2.pause()
+    }
+    setTimeout(pausarAudio2, 20000)
+    function playAudio3() 
+    {
+        audio3.play();
+    }
+    setTimeout(playAudio3, 20000)
+    function pausarAudio3()
+    {
+        audio2.pause()
+    }
+    setTimeout(pausarAudio3, 25000)
 data = new Date()
 tempo_inicial = data.getTime()
 
 document.onkeydown = Pega_Tecla;
-
 function Pega_Tecla(e) 
 {	
     e = e || window.event;
@@ -83,7 +122,7 @@ function Subir()
         TOPO = y + "px"
         $("#foguete").animate({top:TOPO}, 1000)
         temporizador2 = null
-        temporizador2 = setInterval( Descer, 2000)
+        temporizador2 = setInterval( Descer, 1000)
 
     }
 function Descer()
@@ -94,10 +133,11 @@ function Descer()
         ESQUERDA = x + "px"
         $("#foguete").animate({left:ESQUERDA, top:TOPO}, 1000)
         
-        if (y > 600)
+        if (y > 580)
         {
-            y = 600
+            y = 580
         }
     }
+
 </script>  
 </html>
