@@ -10,20 +10,20 @@
 body
     {
         width: 100%;
-        height: 150vh;
+        height: 100vh;
         background-image: linear-gradient(0deg, lightblue, darkblue);
         overflow: hidden;
     }
     .foguete
     {
         position: absolute;
-        top: 650px;
+        top: 600px;
         left: 750px;
     }
     .lua
     {
-        position: absolute;
-        top: 600px;
+        position: fixed;
+        top: 620px;
         left: 445px;
         width: 700px;
         z-index: -1;
@@ -33,10 +33,18 @@ body
     
     <img src="foguete.gif" width="80px" id="foguete" class="foguete">
     <img src="lua.png" class="lua">
+    
+    <audio id="audio">
+        <source src="contagem_regressiva.mp3" type="audio/mpeg">
+    </audio>
 
 </body>
 <script src="jquery-3.7.0.min.js"></script>  
 <script>
+    window.onload = function() {
+    var audio = document.getElementById("audio");
+    audio.play();
+};
 data = new Date()
 tempo_inicial = data.getTime()
 
@@ -55,48 +63,41 @@ function Pega_Tecla(e)
     if(tempo_final-tempo_inicial > 1000)
     {
         tempo_inicial = tempo_final
-        if (tecla==65)
+        if (tecla==37)
         {
             x = x - 20
         }
-        if (tecla==68)
+        if (tecla==39)
         {
             x = x + 20
         }
     }
-
-
 }
-
-temporizador = setTimeout(Subir, 1000)
 x = 750
-y = 60
+y = 50
 TOPO = ""
 ESQUERDA = ""
+temporizador2 = setTimeout(Subir, 10000)
 function Subir()
     {
         TOPO = y + "px"
         $("#foguete").animate({top:TOPO}, 1000)
-        temporizador = null
-        temporizador = setInterval( Decer, 1000)
+        temporizador2 = null
+        temporizador2 = setInterval( Descer, 2000)
+
     }
-function Decer()
+function Descer()
     {
-        y = y + 20
+        y = y + 40
 
         TOPO = y + "px"
         ESQUERDA = x + "px"
         $("#foguete").animate({left:ESQUERDA, top:TOPO}, 1000)
         
-        if (y > 550)
+        if (y > 600)
         {
-            y = 550
+            y = 600
         }
-        
-        
-
-
     }
-
 </script>  
 </html>
