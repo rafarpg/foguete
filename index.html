@@ -34,10 +34,10 @@ body
     <img src="foguete.gif" width="80px" id="foguete" class="foguete">
     <img src="lua.png" class="lua">
     
-    <audio id="audio">
+    <audio id="audio" autoplay="">
         <source src="contagem_regressiva.mp3" type="audio/mp3">
     </audio>
-    <audio id="audio2">
+    <audio id="audio2" >
         <source src="lancamento_foguete.mp3" type="audio/mp3">
     </audio>
     <audio id="audio3">
@@ -50,41 +50,32 @@ body
     audio.src = 'contagem_regressiva.mp3';
     var audio2 = new Audio();
     audio2.src = 'lancamento_foguete.mp3';
-    var audio3 = new Audio('we-have-a-problem.mp3');
-    audio2.src = 'carina-stars-Aug-3.wav';
+    var audio3 = new Audio();
+    audio3.src = 'carina-stars-Aug-3.wav';
+    
+    
+    temporizador = setTimeout(Subir, 19000);
+    temporizador2 = setTimeout(playAudio2, 18500);
+    temporizador3 = setTimeout(playAudio3, 35000);
+    
     function playAudio() 
-    {
+    {   
+        
+        audio = document.getElementById('audio');
         audio.play();
+
     }
-    setTimeout(playAudio, 500)
 
     function playAudio2() 
     {
+        audio2 = document.getElementById('audio2')
         audio2.play();
     }
-    setTimeout(playAudio2, 15000)
-
-    function pausarAudio()
-    {
-        audio.pause()
-    }
-    setTimeout(pausarAudio, 15000)
-
-    function pausarAudio2()
-    {
-        audio2.pause()
-    }
-    setTimeout(pausarAudio2, 20000)
     function playAudio3() 
     {
+        audio3 = document.getElementById('audio3')
         audio3.play();
-    }
-    setTimeout(playAudio3, 20000)
-    function pausarAudio3()
-    {
-        audio2.pause()
-    }
-    setTimeout(pausarAudio3, 25000)
+    }    
 data = new Date()
 tempo_inicial = data.getTime()
 
@@ -113,21 +104,22 @@ function Pega_Tecla(e)
     }
 }
 x = 750
-y = 50
+y = 40
 TOPO = ""
 ESQUERDA = ""
-temporizador2 = setTimeout(Subir, 10000)
+
+
 function Subir()
     {
         TOPO = y + "px"
-        $("#foguete").animate({top:TOPO}, 1000)
-        temporizador2 = null
-        temporizador2 = setInterval( Descer, 1000)
+        $("#foguete").animate({top:TOPO}, 20000)
+        temporizador = null
+        temporizador = setInterval( Descer, 1000)
 
     }
 function Descer()
     {
-        y = y + 40
+        y = y + 15
 
         TOPO = y + "px"
         ESQUERDA = x + "px"
