@@ -37,7 +37,7 @@ body
     <audio id="audio" autoplay="">
         <source src="contagem_regressiva.mp3" type="audio/mp3">
     </audio>
-    <audio id="audio2" >
+    <audio id="audio2">
         <source src="lancamento_foguete.mp3" type="audio/mp3">
     </audio>
     <audio id="audio3">
@@ -46,22 +46,16 @@ body
 </body>
 <script src="jquery-3.7.0.min.js"></script>  
 <script>
-    
-    var audio = new Audio();
-    audio.src = 'contagem_regressiva.mp3';
-    var audio2 = new Audio();
-    audio2.src = 'lancamento_foguete.mp3';
-    var audio3 = new Audio();
-    audio3.src = 'carina-stars-Aug-3.wav';
-    
+
+
     
     temporizador = setTimeout(Subir, 19000);
+    temporizador4 = setTimeout(playAudio, 500);
     temporizador2 = setTimeout(playAudio2, 18500);
     temporizador3 = setTimeout(playAudio3, 35000);
     
-    function playAudio() 
+    function playAudio()
     {   
-        
         audio = document.getElementById('audio');
         audio.play();
 
@@ -105,7 +99,7 @@ function Pega_Tecla(e)
     }
 }
 x = 750
-y = 40
+y = 30
 TOPO = ""
 ESQUERDA = ""
 
